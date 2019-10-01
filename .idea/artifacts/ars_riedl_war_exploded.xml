@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ars_riedl:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ars_riedl_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ars_riedl/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ars_riedl" />
+        </element>
+      </element>
+      <element id="file-copy" path="C:/Program Files (x86)/Java/jre1.8.0_221/lib/ext/mysql-connector-java-8.0.17.jar" />
+    </root>
+  </artifact>
+</component>

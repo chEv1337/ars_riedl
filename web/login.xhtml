@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="Hello, loginworld"/>
+    <h:form>
+        <h:outputLabel value="Bitte Usernamen eingeben:"/>
+        <h:inputText id="user" value='#{login.user}'/>
+        <h:message for="user"/>
+        <br/>
+        <h:outputLabel value="Bitte Passwort eingeben:"/>
+        <h:inputSecret id="password" value="#{login.password}" />
+        <h:message for="password"/>
+        <br/>
+        <h:commandButton value="Login" action="#{login.verifyUser}"/>
+    </h:form>
+    <h:form>
+        <h:commandButton action="index" value="Startseite"/>
+        <h:commandButton action="register" value="Registrierung"/>
+    </h:form>
+</f:view>
+</html>

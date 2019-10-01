@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+
+    <h2>ARTIKELSTAMM</h2>
+
+    <h:dataTable value="#{articleCreateList.articles}" var="article" border="2">
+        <h:column>
+            <f:facet name="header">ArtikelID</f:facet>
+            #{article.articleId}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Artikelname</f:facet>
+            #{article.articleName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Anzahl</f:facet>
+            #{article.articleQuantity}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Preis</f:facet>
+            #{article.articlePrice}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Gewicht</f:facet>
+            #{article.articleWeight}
+        </h:column>
+    </h:dataTable>
+    <h:form>
+        <h:outputLabel>Artikelnummer </h:outputLabel>
+        <h:inputText id="inputArticleId" value="#{reservationEntry.inputArticleId}"/>
+        <br/>
+        <h:outputLabel>Anzahl </h:outputLabel>
+        <h:inputText id="inputQuantity" value="#{reservationEntry.inputQuantity}"/>
+        <br/>
+        <h:commandButton value="Reservieren" action="#{reservationEntry.createReservationEntries}"/>
+    </h:form>
+    <h:dataTable value="#{createCartList.getCartList(reservationEntry.inputQuantity, reservationEntry.inputArticleId)}" var="cartEntry" border="2">
+        <h:column>
+            <f:facet name="header">ArtikelID</f:facet>
+            #{cartEntry.articleId}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Artikelname</f:facet>
+            #{cartEntry.articleName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Anzahl</f:facet>
+            #{cartEntry.articleQuantity}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Preis </f:facet>
+            #{cartEntry.articlePrice}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Gewicht </f:facet>
+            #{cartEntry.articleWeight}
+        </h:column>
+    </h:dataTable>
+    <p>username: #{session.getAttribute("user")}</p>
+    <h:form>
+        <h:commandButton action="welcome" value="Profilseite"/>
+        <h:commandButton action="cart" value="Warenkorb"/>
+        <h:commandButton action="#{login.logoutUser}" value="Logout"/>
+    </h:form>
+</f:view>
+</html>

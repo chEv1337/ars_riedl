@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @Named
 @SessionScoped
 
-public class CreateCartList implements Serializable {
+public class CreateCartList extends ReservationEntry implements Serializable {
 
     public static ArrayList<ArticleMapping> getCartList(int articleId, int inputQuantity) {
         ArticleMapping cartEntry = new ArticleMapping();
@@ -29,8 +29,6 @@ public class CreateCartList implements Serializable {
                 cartEntry.setArticleWeight(rs.getFloat("weight") * (float) inputQuantity);
                 cartEntry.setArticlePrice(rs.getFloat("price") * (float) inputQuantity);
             }
-            System.out.println(cartEntry.getArticleId() + " " + cartEntry.getArticleQuantity() + " " +
-                    cartEntry.getArticleName() + " " + cartEntry.getArticleWeight() + " " + cartEntry.getArticlePrice());
             cartList.add(cartEntry);
             DatabaseConnection.closeConnection(con);
         } catch (SQLException err) {

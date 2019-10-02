@@ -13,14 +13,15 @@ public class DatabaseConnection {
         } catch (Exception err) {
             System.out.println("DatabaseConnection.getConnection() Error -->"
                     + err.getMessage());
-            System.out.println(err);
             return null;
         }
     }
+    //testing git in school
     public static void closeConnection(Connection con) {
         try {
             con.close();
         } catch (Exception err) {
+            System.out.println(err);
         }
     }
 }

@@ -29,6 +29,8 @@ public class CreateCartList implements Serializable {
                 cartEntry.setArticleWeight(rs.getFloat("weight") * (float) inputQuantity);
                 cartEntry.setArticlePrice(rs.getFloat("price") * (float) inputQuantity);
             }
+            System.out.println(cartEntry.getArticleId() + " " + cartEntry.getArticleQuantity() + " " +
+                    cartEntry.getArticleName() + " " + cartEntry.getArticleWeight() + " " + cartEntry.getArticlePrice());
             cartList.add(cartEntry);
             DatabaseConnection.closeConnection(con);
         } catch (SQLException err) {

@@ -43,7 +43,7 @@ public class ReservationEntry implements Serializable {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 counter = rs.getInt("quantity");
-                System.out.println("Quantity from DB: " + rs.getString("quantity"));
+                //System.out.println("Quantity from DB: " + rs.getString("quantity"));
             }
             counter -= inputQuantity;
             System.out.println("counter after calculation: " + counter);
@@ -51,12 +51,12 @@ public class ReservationEntry implements Serializable {
             statement.setInt(1, counter);
             statement.setInt(2, inputArticleId);
             statement.executeUpdate();
-            statement = con.prepareStatement("SELECT quantity FROM article WHERE idarticle = ?");
+            /*statement = con.prepareStatement("SELECT quantity FROM article WHERE idarticle = ?");
             statement.setInt(1, inputArticleId);
              rs = statement.executeQuery();
             while (rs.next()) {
                 System.out.println("Quantity from DB after update: " + rs.getString("quantity"));
-            }
+            }*/
 
             ArrayList<ArticleMapping> cartList;
             cartList = CreateCartList.getCartList(inputArticleId, inputQuantity);
@@ -64,9 +64,9 @@ public class ReservationEntry implements Serializable {
             HttpSession userSession = SessionData.getSession();
             userSession.setAttribute("cartList", cartList);
             DatabaseConnection.closeConnection(con);
-            for(ArticleMapping cartEntry : cartList) {
+            /*for(ArticleMapping cartEntry : cartList) {
                 System.out.println(cartEntry);
-            }
+            }*/
         } catch (SQLException err) {
             System.out.println("ERROR @ ReservationEntry --> " + err.getMessage());
         }

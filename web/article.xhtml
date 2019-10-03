@@ -10,26 +10,26 @@
 
     <h2>ARTIKELSTAMM</h2>
 
-    <h:dataTable value="#{articleCreateList.articles}" var="article" border="2">
+    <h:dataTable value="#{articleCreateList.articles}" var="articleMap" border="2">
         <h:column>
             <f:facet name="header">ArtikelID</f:facet>
-            #{article.articleId}
+            #{articleMap.articleId}
         </h:column>
         <h:column>
             <f:facet name="header">Artikelname</f:facet>
-            #{article.articleName}
+            #{articleMap.articleName}
         </h:column>
         <h:column>
             <f:facet name="header">Anzahl</f:facet>
-            #{article.articleQuantity}
+            #{articleMap.articleQuantity}
         </h:column>
         <h:column>
             <f:facet name="header">Preis</f:facet>
-            #{article.articlePrice}
+            #{articleMap.articlePrice}
         </h:column>
         <h:column>
             <f:facet name="header">Gewicht</f:facet>
-            #{article.articleWeight}
+            #{articleMap.articleWeight}
         </h:column>
     </h:dataTable>
     <h:form>

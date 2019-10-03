@@ -34,6 +34,7 @@ public class SetPersonalData implements Serializable {
                String companyCity = rs.getString("companycity");
                userSession.setAttribute("companyCity", companyCity);
             }
+            userSession.setAttribute("cartArrayCounter", 0);
             connection.close();
         } catch (SQLException err) {
             System.out.println("ERROR@SetPersonalDat -->>" + err.getMessage());

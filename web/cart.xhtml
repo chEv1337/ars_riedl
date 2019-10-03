@@ -32,8 +32,9 @@
             #{cartEntry.articleWeight}
         </h:column>
     </h:dataTable>
+    <p></p>
     <h:form>
-        <h:commandButton value="Reservieren"/>
+        <h:commandButton value="Reservieren" action="#{createReservationTable.getReservationData}"/>
         <br> </br>
         <h:commandButton action="article" value="Artikelauswahl"/>
         <h:commandButton action="#{login.logoutUser}" value="Logout"/>

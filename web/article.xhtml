@@ -41,7 +41,7 @@
         <br/>
         <h:commandButton value="Reservieren" action="#{reservationEntry.createReservationEntries}"/>
     </h:form>
-    <h:dataTable value="#{createCartList.getCartList(reservationEntry.inputArticleId, reservationEntry.inputQuantity)}" var="cartEntry" border="2">
+    <h:dataTable value="#{session.getAttribute('cartList')}" var="cartEntry" border="2">
         <h:column>
             <f:facet name="header">ArtikelID</f:facet>
             #{cartEntry.articleId}

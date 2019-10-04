@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Named
@@ -35,6 +37,8 @@ public class SetPersonalData implements Serializable {
                userSession.setAttribute("companyCity", companyCity);
             }
             userSession.setAttribute("cartArrayCounter", 0);
+            List<ArticleMapping> cartList = new ArrayList<>();
+            userSession.setAttribute("cartList", cartList);
             connection.close();
         } catch (SQLException err) {
             System.out.println("ERROR@SetPersonalDat -->>" + err.getMessage());

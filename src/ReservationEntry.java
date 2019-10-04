@@ -7,7 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Named
@@ -45,6 +46,8 @@ public class ReservationEntry implements Serializable {
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement statement;
         int counter = 0;
+        HttpSession userSession = SessionData.getSession();
+        List<ArticleMapping> cartList = (ArrayList<ArticleMapping>)userSession.getAttribute("cartList");
 
         try{
             statement = con.prepareStatement("SELECT quantity FROM article WHERE idarticle = ?");
@@ -60,12 +63,15 @@ public class ReservationEntry implements Serializable {
             statement.setInt(2, inputArticleId);
             statement.executeUpdate();
 
-            HttpSession userSession = SessionData.getSession();
+
             int cartArrayCounter = (int) userSession.getAttribute("cartArrayCounter");
             cartArrayCounter++;
+            cartList.add(CreateCartList.getCartList(inputArticleId,inputQuantity));
+            userSession.setAttribute("cartList", cartList);
             userSession.setAttribute("cartArrayCounter", cartArrayCounter);
             userSession.setAttribute("inputArticleId", inputArticleId);
             userSession.setAttribute("inputQuantity", inputQuantity);
+            System.out.println(cartList.size() + " cartListSize @ ReservationEntry.java");
             System.out.println(cartArrayCounter + " : cartArrayCounter @ ReservationEntry.java");
             DatabaseConnection.closeConnection(con);
 

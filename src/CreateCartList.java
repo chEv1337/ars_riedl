@@ -15,34 +15,30 @@ import java.util.List;
 
 public class CreateCartList implements Serializable {
 
-    public List<ArticleMapping> getCartList(int articleId, int inputQuantity) {
+    public static ArticleMapping getCartList(int articleId, int inputQuantity) {
 
-        List<ArticleMapping> cartList = new ArrayList<>();
+        ArticleMapping cartEntry = new ArticleMapping();
 
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement statement;
-        HttpSession userSession = SessionData.getSession();
-        //System.out.println(articleId + " : articleID; " + inputQuantity + " : inputquantity");
         try {
             statement = con.prepareStatement("SELECT * FROM article WHERE idarticle = ?");
             statement.setInt(1, articleId);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                ArticleMapping cartEntry = new ArticleMapping();
+
                 cartEntry.setArticleId(articleId);
                 cartEntry.setArticleQuantity(inputQuantity);
                 cartEntry.setArticleName(rs.getString("articlename"));
                 cartEntry.setArticleWeight(rs.getFloat("weight") * (float) inputQuantity);
                 cartEntry.setArticlePrice(rs.getFloat("price") * (float) inputQuantity);
-                cartList.add(cartEntry);
+
             }
-            System.out.println(cartList.size() + " cartListSize @ CreateCartList.java");
-            userSession.setAttribute("cartList", cartList);
             DatabaseConnection.closeConnection(con);
 
         } catch (SQLException err) {
             System.out.println("ERROR @ CreateCartList --> " + err.getMessage());
         }
-        return cartList;
+        return cartEntry;
     }
 }

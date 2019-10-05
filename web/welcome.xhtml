@@ -5,21 +5,22 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-    <br></br>
-    <h:outputLabel value="Personalisierte Daten"/>
-
-    <p>Hi #{session.getAttribute("user")}</p>
-    <p>Userdata:</p>
-    <p>#{session.getAttribute("email")}</p>
-    <p>#{session.getAttribute("companyName")}</p>
-    <p>#{session.getAttribute("companyAddress")}</p>
-    <p>#{session.getAttribute("companyPostal")} #{session.getAttribute("companyCity")}</p>
-
-    <h:form>
-        <h:commandButton value="Logout" action="#{login.logoutUser}"/>
-        <h:commandButton value="Artikelreservoir" action="article"/>
-    </h:form>
-</f:view>
+<h:body>
+    <f:view>
+        <h1>
+        <h:outputLabel value="Profilseite: "/>
+        </h1>
+        <p>Hi #{session.getAttribute("user")} <br/>
+        Userdata: <br/>
+        #{session.getAttribute("email")} <br/>
+        #{session.getAttribute("companyName")} <br/>
+        #{session.getAttribute("companyAddress")} <br/>
+        #{session.getAttribute("companyPostal")} #{session.getAttribute("companyCity")} <br/>
+        </p>
+        <h:form>
+            <h:commandButton value="Logout" action="#{login.logoutUser}"/>
+            <h:commandButton value="Artikelreservoir" action="article"/>
+        </h:form>
+    </f:view>
+</h:body>
 </html>

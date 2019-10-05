@@ -5,22 +5,24 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, loginworld"/>
-    <h:form>
-        <h:outputLabel value="Bitte Usernamen eingeben:"/>
-        <h:inputText id="user" value='#{login.user}'/>
-        <h:message for="user"/>
-        <br/>
-        <h:outputLabel value="Bitte Passwort eingeben:"/>
-        <h:inputSecret id="password" value="#{login.password}" />
-        <h:message for="password"/>
-        <br/>
-        <h:commandButton value="Login" action="#{login.verifyUser}"/>
-    </h:form>
-    <h:form>
-        <h:commandButton action="index" value="Startseite"/>
-        <h:commandButton action="register" value="Registrierung"/>
-    </h:form>
-</f:view>
+<h:body>
+    <f:view>
+        <h:outputLabel value="Hello, loginworld"/>
+        <h:form>
+            <h:outputLabel value="Bitte Usernamen eingeben:"/>
+            <h:inputText id="user" value='#{login.user}'/>
+            <h:message for="user"/>
+            <br/>
+            <h:outputLabel value="Bitte Passwort eingeben:"/>
+            <h:inputSecret id="password" value="#{login.password}" />
+            <h:message for="password"/>
+            <br/>
+            <h:commandButton value="Login" action="#{login.verifyUser}"/>
+        </h:form>
+        <h:form>
+            <h:commandButton action="index" value="Startseite"/>
+            <h:commandButton action="register" value="Registrierung"/>
+        </h:form>
+    </f:view>
+</h:body>
 </html>

@@ -5,39 +5,41 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, CARTworld"/>
-    <br/>
-    <h:outputLabel value="Reservierungszusammenfassung:"/>
-    <br/>
-    <h:dataTable value="#{session.getAttribute('cartList')}" var="cartEntry" border = "2">
-        <h:column>
-            <f:facet name="header">ArtikelID</f:facet>
-            #{cartEntry.articleId}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Artikelname</f:facet>
-            #{cartEntry.articleName}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Anzahl</f:facet>
-            #{cartEntry.articleQuantity}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Preis </f:facet>
-            #{cartEntry.articlePrice}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Gewicht </f:facet>
-            #{cartEntry.articleWeight}
-        </h:column>
-    </h:dataTable>
-    <p></p>
-    <h:form>
-        <h:commandButton value="Reservieren"  action="#{createReservationFile.createReservationFile}"/>
-        <br> </br>
-        <h:commandButton action="article" value="Artikelauswahl"/>
-        <h:commandButton action="#{login.logoutUser}" value="Logout"/>
-    </h:form>
-</f:view>
+<h:body>
+    <f:view>
+        <h1>
+        <h:outputLabel value="Reservierungszusammenfassung:"/>
+        </h1>
+        <br/>
+        <h:dataTable value="#{session.getAttribute('cartList')}" var="cartEntry" border = "2">
+            <h:column>
+                <f:facet name="header">ArtikelID</f:facet>
+                #{cartEntry.articleId}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Artikelname</f:facet>
+                #{cartEntry.articleName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Anzahl</f:facet>
+                #{cartEntry.articleQuantity}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Preis </f:facet>
+                #{cartEntry.articlePrice}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Gewicht </f:facet>
+                #{cartEntry.articleWeight}
+            </h:column>
+        </h:dataTable>
+        <h:form>
+            <br/>
+            <h:commandButton value="Reservieren"  action="#{createReservationFile.createReservationFile}"/>
+            <br/>
+            <h:commandButton action="article" value="Artikelauswahl"/>
+            <h:commandButton action="#{login.logoutUser}" value="Logout"/>
+        </h:form>
+    </f:view>
+</h:body>
 </html>

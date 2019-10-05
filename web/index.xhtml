@@ -5,18 +5,22 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-   <h:form>
-      <h:outputLabel value="Willkommen zum ARS"/>
-      <br></br> <br></br>
-      <h:outputLabel value="Weiter zum Login"/>
-      <br></br>
-      <h:commandButton action="login" value="Login" />
-      <br></br>
-      <h:outputLabel value="Noch nicht registriert?"/>
-      <br></br>
-      <h:commandButton action="register" value="Register" />
-      <br></br>
-   </h:form>
-</f:view>
+<h:body>
+   <f:view>
+      <h:form>
+         <h1>
+         <h:outputLabel value="Willkommen zum ARS"/>
+         </h1>
+         <br/>
+         <h:outputLabel value="Weiter zum Login"/>
+         <br/>
+         <h:commandButton action="login" value="Login" />
+         <br/>
+         <h:outputLabel value="Noch nicht registriert?"/>
+         <br/>
+         <h:commandButton action="register" value="Register" />
+         <br/>
+      </h:form>
+   </f:view>
+</h:body>
 </html>

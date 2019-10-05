@@ -56,7 +56,7 @@ public class Login implements Serializable {
     public String logoutUser() {
         HttpSession session =  SessionData.getSession();
         session.invalidate();
-        return "index";
+        return "logout";
     }
 
 }

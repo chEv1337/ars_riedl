@@ -5,37 +5,43 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:form>
-        <h:outputLabel value="Hello, registerworld"/>
-        <br> </br><br> </br>
-        <h:outputLabel value="Bitte geben Sie einen Usernamen ein:"/>
-        <h:inputText id="user" value="#{register.user}"/>
-        <br></br>
-        <h:outputLabel value="Bitte geben Sie ein Passwort ein:"/>
-        <h:inputSecret id="password" value="#{register.password}"/>
-        <br></br>
-        <h:outputLabel value="Bitte geben Sie ihre Emailaddresse ein:"/>
-        <h:inputText id="email" value="#{register.email}"/>
-        <br></br>
-        <h:outputLabel value="Bitte geben Sie ihren Firmennamen ein:"/>
-        <h:inputText id="company" value="#{register.companyName}"/>
-        <br></br>
-        <h:outputLabel value="Bitte geben Sie ihre Firmenadresse ein:" />
-        <h:inputText id="address" value="#{register.companyAddress}"/>
-        <br></br>
-        <h:outputLabel value="Bitte geben Sie ihre Firmenpostleitzahl ein:" />
-        <h:inputText id="postal" value="#{register.companyPostal}"/>
-        <br></br>
-        <h:outputLabel value="Bitte geben Sie die Stadt des Firmenstandortes ein:" />
-        <h:inputText id="city" value="#{register.companyCity}"/>
-        <br></br>
-        <h:commandButton value="Register" action="#{register.registerUser}"/>
-        <br></br>
-    </h:form>
-    <h:form>
-        <h:commandButton action="index" value="Startseite"/>
-        <h:commandButton action="login" value="Loginseite"/>
-    </h:form>
-</f:view>
+<h:body>
+    <f:view>
+        <h:form>
+            <h1>
+            <h:outputLabel value="Register"/>
+            </h1>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie einen Usernamen ein:"/>
+            <h:inputText id="user" value="#{register.user}"/>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie ein Passwort ein:"/>
+            <h:inputSecret id="password" value="#{register.password}"/>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie ihre Emailaddresse ein:"/>
+            <h:inputText id="email" value="#{register.email}"/>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie ihren Firmennamen ein:"/>
+            <h:inputText id="company" value="#{register.companyName}"/>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie ihre Firmenadresse ein:" />
+            <h:inputText id="address" value="#{register.companyAddress}"/>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie ihre Firmenpostleitzahl ein:" />
+            <h:inputText id="postal" value="#{register.companyPostal}"/>
+            <br/>
+            <h:outputLabel value="Bitte geben Sie die Stadt des Firmenstandortes ein:" />
+            <h:inputText id="city" value="#{register.companyCity}"/>
+            <br/>
+            <br/>
+            <h:commandButton value="Register" action="#{register.registerUser}"/>
+            <br/>
+            <br/>
+        </h:form>
+        <h:form>
+            <h:commandButton action="index" value="Startseite"/>
+            <h:commandButton action="login" value="Loginseite"/>
+        </h:form>
+    </f:view>
+</h:body>
 </html>

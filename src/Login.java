@@ -44,6 +44,7 @@ public class Login implements Serializable {
         if(validation) {
             HttpSession userSession = SessionData.getSession();
             userSession.setAttribute("user", user);
+            userSession.setAttribute("sessionValid", "true");
             SetPersonalData.setData(userSession);
             return "welcome";
         } else {

@@ -43,14 +43,20 @@
             <br/>
             <h:panelGrid columns="2">
                 <h:outputLabel styleClass="default" value="Artikelnummer:"/>
-                <h:inputText styleClass="cartInput" id="inputArticleId" />
-                <h:outputLabel styleClass="default" value="Anzahl:"/>
-                <h:inputText styleClass="cartInput" id="inputQuantity" />
+                <h:inputText styleClass="cartInput" id="inputArticleId" value="#{adminArticleManipulation.articleId}"/>
+                <h:outputLabel styleClass="default" value="Artikelname:"/>
+                <h:inputText styleClass="cartInput" id="inputArticleName" value="#{adminArticleManipulation.articleName}"/>
+                <h:outputLabel styleClass="default" value="Anzahl:" />
+                <h:inputText styleClass="cartInput" id="inputArticleQuantity" value="#{adminArticleManipulation.articleQuantity}"/>
+                <h:outputLabel styleClass="default" value="Preis:"/>
+                <h:inputText styleClass="cartInput" id="inputPrice" value="#{adminArticleManipulation.articlePrice}"/>
+                <h:outputLabel styleClass="default" value="Gewicht:"/>
+                <h:inputText styleClass="cartInput" id="inputWeight" value="#{adminArticleManipulation.articleWeight}" />
             </h:panelGrid>
             <br/>
             <br/>
-            <h:commandButton value="Artikel hinzufügen" />
-            <h:commandButton value="Artikel ändern" />
+            <h:commandButton value="Artikel hinzufügen" action="#{adminArticleManipulation.addArticle}"/>
+            <h:commandButton value="Artikel ändern" action="#{adminArticleManipulation.manipulateArticle}"/>
             <br/>
         </h:form>
         <br/>

@@ -18,19 +18,19 @@
             <br/>
             <h:panelGrid columns="2">
                 <h:outputLabel styleClass="default" value="Username:"/>
-                <h:inputText id="user" value="#{register.user}"/>
+                <h:inputText id="user" value="#{register.user}" required="true"/>
                 <h:outputLabel styleClass="default" value="Passwort:"/>
-                <h:inputSecret id="password" value="#{register.password}"/>
+                <h:inputSecret id="password" value="#{register.password}" required="true"/>
                 <h:outputLabel styleClass="default" value="Emailadresse:"/>
-                <h:inputText id="email" value="#{register.email}"/>
+                <h:inputText id="email" value="#{register.email}" required="true"/>
                 <h:outputLabel styleClass="default" value="Firmenname:"/>
-                <h:inputText id="company" value="#{register.companyName}"/>
+                <h:inputText id="company" value="#{register.companyName}" required="true"/>
                 <h:outputLabel styleClass="default" value="Straße und Hausnummer:" />
-                <h:inputText id="address" value="#{register.companyAddress}"/>
+                <h:inputText id="address" value="#{register.companyAddress}" required="true"/>
                 <h:outputLabel styleClass="default" value="Postleitzahl:" />
-                <h:inputText id="postal" value="#{register.companyPostal}"/>
+                <h:inputText id="postal" value="#{register.companyPostal}" required="true"/>
                 <h:outputLabel styleClass="default" value="Stadt:" />
-                <h:inputText id="city" value="#{register.companyCity}"/>
+                <h:inputText id="city" value="#{register.companyCity}" required="true"/>
             </h:panelGrid>
             <br/>
             <h:messages globalOnly="true" style="font-family: Calibri, Arial, Helvetica, sans-serif; color:red"/>

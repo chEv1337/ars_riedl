@@ -1,6 +1,5 @@
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

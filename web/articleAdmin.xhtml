@@ -43,17 +43,18 @@
             <br/>
             <h:panelGrid columns="2">
                 <h:outputLabel styleClass="default" value="Artikelnummer:"/>
-                <h:inputText styleClass="cartInput" id="inputArticleId" value="#{adminArticleManipulation.articleId}"/>
+                <h:inputText styleClass="cartInput" id="inputArticleId" value="#{adminArticleManipulation.articleId}" required="true"/>
                 <h:outputLabel styleClass="default" value="Artikelname:"/>
-                <h:inputText styleClass="cartInput" id="inputArticleName" value="#{adminArticleManipulation.articleName}"/>
+                <h:inputText styleClass="cartInput" id="inputArticleName" value="#{adminArticleManipulation.articleName}" required="true"/>
                 <h:outputLabel styleClass="default" value="Anzahl:" />
-                <h:inputText styleClass="cartInput" id="inputArticleQuantity" value="#{adminArticleManipulation.articleQuantity}"/>
+                <h:inputText styleClass="cartInput" id="inputArticleQuantity" value="#{adminArticleManipulation.articleQuantity}" required="true"/>
                 <h:outputLabel styleClass="default" value="Preis:"/>
-                <h:inputText styleClass="cartInput" id="inputPrice" value="#{adminArticleManipulation.articlePrice}"/>
+                <h:inputText styleClass="cartInput" id="inputPrice" value="#{adminArticleManipulation.articlePrice}" required="true"/>
                 <h:outputLabel styleClass="default" value="Gewicht:"/>
-                <h:inputText styleClass="cartInput" id="inputWeight" value="#{adminArticleManipulation.articleWeight}" />
+                <h:inputText styleClass="cartInput" id="inputWeight" value="#{adminArticleManipulation.articleWeight}" required="true"/>
             </h:panelGrid>
             <br/>
+            <h:messages globalOnly="false" style="font-family: Calibri, Arial, Helvetica, sans-serif; color:red"/>
             <br/>
             <h:commandButton value="Artikel hinzufügen" action="#{adminArticleManipulation.addArticle}"/>
             <h:commandButton value="Artikel ändern" action="#{adminArticleManipulation.manipulateArticle}"/>

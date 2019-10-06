@@ -1,8 +1,11 @@
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Named
@@ -71,14 +74,20 @@ public class AdminArticleManipulation implements Serializable {
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("INSERT INTO article(articlename, quantity, price, weight)"
-                                            +" VALUES (?,?,?,?)");
-            stmt.setString(1, articleName);
-            stmt.setInt(2, articleQuantity);
-            stmt.setFloat(3, articlePrice);
-            stmt.setFloat(4, articleWeight);
-            stmt.executeUpdate();
-            DatabaseConnection.closeConnection(con);
+            if(articleQuantity < 0 || articlePrice < 0 || articleWeight < 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                        "Bitte überprüfen Sie Ihre Eingabe",
+                        "Please try again or contact your administrator."));
+            } else {
+                stmt = con.prepareStatement("INSERT INTO article(articlename, quantity, price, weight)"
+                        + " VALUES (?,?,?,?)");
+                stmt.setString(1, articleName);
+                stmt.setInt(2, articleQuantity);
+                stmt.setFloat(3, articlePrice);
+                stmt.setFloat(4, articleWeight);
+                stmt.executeUpdate();
+                DatabaseConnection.closeConnection(con);
+            }
         } catch (SQLException err) {
             System.out.println("Error @ AdminArticleManipulation --> " + err.getMessage());
         }
@@ -86,15 +95,28 @@ public class AdminArticleManipulation implements Serializable {
     public void manipulateArticle() {
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement stmt;
+        int checkId = 0;
         try {
-            stmt = con.prepareStatement("UPDATE article SET articlename= ?, quantity = ?, price = ?, weight = ? WHERE idarticle = ?");
-            stmt.setString(1, articleName);
-            stmt.setInt(2, articleQuantity);
-            stmt.setFloat(3, articlePrice);
-            stmt.setFloat(4, articleWeight);
-            stmt.setInt(5, articleId);
-            stmt.executeUpdate();
-            DatabaseConnection.closeConnection(con);
+            stmt = con.prepareStatement("SELECT idarticle FROM article WHERE idarticle = ?");
+            stmt.setInt(1,articleId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                checkId = rs.getInt("idarticle");
+            }
+            if(articleQuantity < 0 || articlePrice < 0 || articleWeight < 0 || checkId == 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                        "Bitte überprüfen Sie Ihre Eingabe",
+                        "Please try again or contact your administrator."));
+            } else {
+                stmt = con.prepareStatement("UPDATE article SET articlename = ?, quantity = ?, price = ?, weight = ? WHERE idarticle = ?");
+                stmt.setString(1, articleName);
+                stmt.setInt(2, articleQuantity);
+                stmt.setFloat(3, articlePrice);
+                stmt.setFloat(4, articleWeight);
+                stmt.setInt(5, articleId);
+                stmt.executeUpdate();
+                DatabaseConnection.closeConnection(con);
+            }
         } catch (SQLException err) {
             System.out.println("Error @ AdminArticleManipulation --> " + err.getMessage());
         }

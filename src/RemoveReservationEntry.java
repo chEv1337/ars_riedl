@@ -1,4 +1,6 @@
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
@@ -43,29 +45,49 @@ public class RemoveReservationEntry implements Serializable {
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement stmnt;
         int quantityDatabase = 0;
+        int artId = 0;
         try {
-            stmnt = con.prepareStatement("SELECT quantity FROM article WHERE idarticle = ?");
+            stmnt = con.prepareStatement("SELECT quantity, idarticle FROM article WHERE idarticle = ?");
             stmnt.setInt(1,inputArticleId);
             ResultSet rs = stmnt.executeQuery();
             while(rs.next()) {
                 quantityDatabase = rs.getInt("quantity");
+                artId = rs.getInt("idarticle");
             }
-            stmnt = con.prepareStatement("UPDATE article SET quantity = ? WHERE idarticle = ?");
-            stmnt.setInt(1, inputQuantity + quantityDatabase);
-            stmnt.setInt(2, inputArticleId);
-            stmnt.executeUpdate();
-            for (ArticleMapping article : cartList) {
-                if(article.getArticleId() == inputArticleId) {
-                    if(article.getArticleQuantity() == inputQuantity) {
-                        cartList.remove(article);
-                        break;
+            if(artId == 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                        "Bitte überprüfen Sie Ihre Eingabe",
+                        "Please try again or contact your administrator."));
+            } else {
+                for (ArticleMapping article : cartList) {
+                    if (article.getArticleId() == inputArticleId) {
+                        if (article.getArticleQuantity() < inputQuantity) {
+                            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                    "Bitte überprüfen Sie Ihre Eingabe",
+                                    "Please try again or contact your administrator."));
+                            break;
+                        } else {
+                            stmnt = con.prepareStatement("UPDATE article SET quantity = ? WHERE idarticle = ?");
+                            stmnt.setInt(1, inputQuantity + quantityDatabase);
+                            stmnt.setInt(2, inputArticleId);
+                            stmnt.executeUpdate();
+                            userSession.setAttribute("cartList", cartList);
+                            if (article.getArticleQuantity() == inputQuantity) {
+                                cartList.remove(article);
+                                break;
+                            } else {
+                                article.setArticleQuantity(article.getArticleQuantity() - inputQuantity);
+                                break;
+                            }
+                        }
                     } else {
-                        article.setArticleQuantity(article.getArticleQuantity() - inputQuantity);
-                        break;
+                        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "Bitte überprüfen Sie Ihre Eingabe",
+                                "Please try again or contact your administrator."));
                     }
                 }
+
             }
-            userSession.setAttribute("cartList", cartList);
         } catch (SQLException err) {
             System.out.println("Error @ RemoveReservationEntry.java -->" + err.getMessage());
         }

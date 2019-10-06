@@ -66,7 +66,6 @@ public class ReservationEntry implements Serializable {
                         "Bitte überprüfen Sie Ihre Eingabe",
                         "Please try again or contact your administrator."));
             } else {
-                //System.out.println("counter after calculation: " + counter);
                 statement = con.prepareStatement("UPDATE article SET quantity = ? WHERE idarticle = ?");
                 statement.setInt(1, counter);
                 statement.setInt(2, inputArticleId);

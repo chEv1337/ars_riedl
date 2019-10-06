@@ -17,7 +17,7 @@
         <h1>
             <h:outputLabel value="Artikelstamm"/>
         </h1>
-        <h:dataTable value="#{articleCreateList.articles}" var="articleMap" border="2">
+        <h:dataTable bgcolor="lightgrey" styleClass="default" value="#{articleCreateList.articles}" var="articleMap" border="1">
             <h:column>
                 <f:facet name="header">ArtikelID</f:facet>
                 #{articleMap.articleId}
@@ -41,11 +41,12 @@
         </h:dataTable>
         <h:form>
             <br/>
-            <h:outputLabel>Artikelnummer </h:outputLabel>
-            <h:inputText id="inputArticleId" value="#{reservationEntry.inputArticleId}"/>
-            <br/>
-            <h:outputLabel>Anzahl </h:outputLabel>
-            <h:inputText id="inputQuantity" value="#{reservationEntry.inputQuantity}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel styleClass="default" value="Artikelnummer:"/>
+                <h:inputText styleClass="cartInput" id="inputArticleId" value="#{reservationEntry.inputArticleId}"/>
+                <h:outputLabel styleClass="default" value="Anzahl:"/>
+                <h:inputText styleClass="cartInput" id="inputQuantity" value="#{reservationEntry.inputQuantity}"/>
+            </h:panelGrid>
             <br/>
             <br/>
             <h:commandButton value="Reservieren" action="#{reservationEntry.createReservationEntries}"/>
@@ -53,9 +54,9 @@
         </h:form>
         <br/>
         <h2>
-            <h:outputLabel value="Reservierte Artikel: "/>
+            <h:outputLabel styleClass="default" value="Reservierte Artikel: "/>
         </h2>
-        <h:dataTable value="#{session.getAttribute('cartList')}" var="cartEntry" border="2">
+        <h:dataTable bgcolor="lightgrey" styleClass="default" value="#{session.getAttribute('cartList')}" var="cartEntry" border="1" rendered="#{session.getAttribute('cartArrayCounter') > 0}">
             <h:column>
                 <f:facet name="header">ArtikelID</f:facet>
                 #{cartEntry.articleId}
@@ -77,10 +78,12 @@
                 #{cartEntry.articleWeight}
             </h:column>
         </h:dataTable>
-        <h:form>
+        <br/>
+        <h:form >
+            <h:commandButton action="cart" value="Warenkorb"/>
+            <br/>
             <br/>
             <h:commandButton action="welcome" value="Profilseite"/>
-            <h:commandButton action="cart" value="Warenkorb"/>
             <h:commandButton action="#{login.logoutUser}" value="Logout"/>
         </h:form>
     </f:view>

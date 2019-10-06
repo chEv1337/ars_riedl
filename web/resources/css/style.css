@@ -1,3 +1,35 @@
 body {
     background: darkgrey;
+    padding-top: 23px;
+    padding-left: 46px;
+    padding-right: 46px;
+    padding-bottom: 46px;
+    width:50%;
+    min-height: 100%;
+    min-width: 320px;
+    margin: 0;
+    background-position-x: 50%;
+    background-position-y: 46px;
+    position: relative;
+    right: 25%;
+    top: 25%;
+    left: 25%;
 }
+html {
+    background: lightgrey;
+}
+
+h1, h2, h3 {
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+
+}
+
+
+.default {
+    font-family: Calibri, Arial, Helvetica, sans-serif;
+}
+
+.cartInput {
+    width: 50%;
+}
+

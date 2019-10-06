@@ -27,6 +27,8 @@ public class CreateReservationFile implements Serializable {
         } catch (IOException err) {
             System.out.println("Error @ CreateReservationFile.java -->" + err.getMessage());
         }
+
+        DeleteCart.deleteUserCart();
         return "success";
     }
 }

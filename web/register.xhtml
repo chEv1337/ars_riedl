@@ -16,27 +16,24 @@
             <h:outputLabel value="Register"/>
             </h1>
             <br/>
-            <h:outputLabel value="Bitte geben Sie einen Usernamen ein:"/>
-            <h:inputText id="user" value="#{register.user}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel styleClass="default" value="Username:"/>
+                <h:inputText id="user" value="#{register.user}"/>
+                <h:outputLabel styleClass="default" value="Passwort:"/>
+                <h:inputSecret id="password" value="#{register.password}"/>
+                <h:outputLabel styleClass="default" value="Emailadresse:"/>
+                <h:inputText id="email" value="#{register.email}"/>
+                <h:outputLabel styleClass="default" value="Firmenname:"/>
+                <h:inputText id="company" value="#{register.companyName}"/>
+                <h:outputLabel styleClass="default" value="Straße und Hausnummer:" />
+                <h:inputText id="address" value="#{register.companyAddress}"/>
+                <h:outputLabel styleClass="default" value="Postleitzahl:" />
+                <h:inputText id="postal" value="#{register.companyPostal}"/>
+                <h:outputLabel styleClass="default" value="Stadt:" />
+                <h:inputText id="city" value="#{register.companyCity}"/>
+            </h:panelGrid>
             <br/>
-            <h:outputLabel value="Bitte geben Sie ein Passwort ein:"/>
-            <h:inputSecret id="password" value="#{register.password}"/>
-            <br/>
-            <h:outputLabel value="Bitte geben Sie ihre Emailaddresse ein:"/>
-            <h:inputText id="email" value="#{register.email}"/>
-            <br/>
-            <h:outputLabel value="Bitte geben Sie ihren Firmennamen ein:"/>
-            <h:inputText id="company" value="#{register.companyName}"/>
-            <br/>
-            <h:outputLabel value="Bitte geben Sie ihre Firmenadresse ein:" />
-            <h:inputText id="address" value="#{register.companyAddress}"/>
-            <br/>
-            <h:outputLabel value="Bitte geben Sie ihre Firmenpostleitzahl ein:" />
-            <h:inputText id="postal" value="#{register.companyPostal}"/>
-            <br/>
-            <h:outputLabel value="Bitte geben Sie die Stadt des Firmenstandortes ein:" />
-            <h:inputText id="city" value="#{register.companyCity}"/>
-            <br/>
+            <h:messages globalOnly="true" style="font-family: Calibri, Arial, Helvetica, sans-serif; color:red"/>
             <br/>
             <h:commandButton value="Register" action="#{register.registerUser}"/>
             <br/>

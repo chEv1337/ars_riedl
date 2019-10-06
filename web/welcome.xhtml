@@ -17,16 +17,31 @@
         <h1>
         <h:outputLabel value="Profilseite: "/>
         </h1>
-        <p>Hi #{session.getAttribute("user")} <br/>
-        Userdata: <br/>
-        #{session.getAttribute("email")} <br/>
-        #{session.getAttribute("companyName")} <br/>
-        #{session.getAttribute("companyAddress")} <br/>
-        #{session.getAttribute("companyPostal")} #{session.getAttribute("companyCity")} <br/>
+        <p class="default">
+            Hi #{session.getAttribute("user")}
+            <br/>
+            <br/>
+            Userdata:
+            <br/>
         </p>
+        <h:panelGrid styleClass="default" columns="2">
+            <h:outputLabel value="Email:"/>
+            <h:outputLabel value="#{session.getAttribute('email')}"/>
+            <h:outputLabel value="Firmenname:"/>
+            <h:outputLabel value="#{session.getAttribute('companyName')}"/>
+            <h:outputLabel value="Firmenadresse:"/>
+            <h:outputLabel value="#{session.getAttribute('companyAddress')}"/>
+            <h:outputLabel value="Postleitzahl:"/>
+            <h:outputLabel value="#{session.getAttribute('companyPostal')}"/>
+            <h:outputLabel value="Stadt:"/>
+            <h:outputLabel value="#{session.getAttribute('companyCity')}"/>
+        </h:panelGrid>
+        <br/>
         <h:form>
-            <h:commandButton value="Logout" action="#{login.logoutUser}"/>
+            <h:commandButton value="Reservierungshistory" action="reservations"/>
             <h:commandButton value="Artikelreservoir" action="article"/>
+            <br/>
+            <h:commandButton value="Logout" action="#{login.logoutUser}"/>
         </h:form>
     </f:view>
 </h:body>

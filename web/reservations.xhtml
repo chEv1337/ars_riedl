@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <link rel="stylesheet" href="resources/css/style.css"/>
+    <f:metadata>
+        <f:viewAction action="#{sessionValidation.validateSession}"/>
+    </f:metadata>
+</h:head>
+<h:body>
+    <f:view>
+        <h1>
+            <h:outputLabel value="Reservierungshistorie"/>
+        </h1>
+        <h:dataTable bgcolor="lightgrey" styleClass="default" value="#{fetchReservations.reservations}" var="reservation" border="1">
+            <h:column>
+                <f:facet name="header">Username</f:facet>
+                #{reservation.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Reservierungsnummer</f:facet>
+                #{reservation.reservationNumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Artikelnummer</f:facet>
+                #{reservation.idArticle}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Artikelname</f:facet>
+                #{reservation.articleName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Anzahl</f:facet>
+                #{reservation.reservationQuantity}
+            </h:column>
+        </h:dataTable>
+        <h:form>
+            <br/>
+            <h:commandButton value="Artikelreservoir" action="article"/>
+            <br/>
+            <br/>
+            <h:commandButton action="welcome" value="Profilseite"/>
+            <h:commandButton value="Logout" action="#{login.logoutUser}"/>
+        </h:form>
+    </f:view>
+</h:body>
+</html>

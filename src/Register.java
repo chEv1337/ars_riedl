@@ -75,7 +75,7 @@ public class Register implements Serializable {
 
     public String registerUser() {
 
-        boolean validator = WriteDatabase.writePersonalData(user, password, email, companyName, companyAddress, companyPostal, companyCity);
+        boolean validator = InsertPersonalDataInDatabase.writePersonalData(user, password, email, companyName, companyAddress, companyPostal, companyCity);
         if(validator) {
             HttpSession session = SessionData.getSession();
             session.setAttribute("user", user);

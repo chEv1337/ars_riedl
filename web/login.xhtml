@@ -15,15 +15,18 @@
         <h:outputLabel value="Login"/>
         </h1>
         <h:form>
-            <h:outputLabel value="Bitte Usernamen eingeben:"/>
-            <h:inputText id="user" value='#{login.user}'/>
-            <h:message for="user"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel styleClass="default" value="Bitte Usernamen eingeben:"/>
+                <h:inputText id="user" value='#{login.user}'/>
+                <h:outputLabel styleClass="default" value="Bitte Passwort eingeben:"/>
+                <h:inputSecret id="password" value="#{login.password}" />
+            </h:panelGrid>
             <br/>
-            <h:outputLabel value="Bitte Passwort eingeben:"/>
-            <h:inputSecret id="password" value="#{login.password}" />
-            <h:message for="password"/>
+            <h:messages globalOnly="true" style="font-family: Calibri, Arial, Helvetica, sans-serif; color:red"/>
             <br/>
             <h:commandButton value="Login" action="#{login.verifyUser}"/>
+            <br/>
+            <br/>
         </h:form>
         <h:form>
             <h:commandButton action="index" value="Startseite"/>

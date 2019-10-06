@@ -63,6 +63,7 @@ public class ReservationEntry implements Serializable {
             statement.setInt(2, inputArticleId);
             statement.executeUpdate();
 
+            InsertReservationDataIntoDatabase.insertReservation(inputArticleId,inputQuantity);
 
             int cartArrayCounter = (int) userSession.getAttribute("cartArrayCounter");
             cartArrayCounter++;

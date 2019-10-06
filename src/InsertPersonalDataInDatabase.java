@@ -9,7 +9,7 @@ import java.sql.SQLException;
 @Named
 @SessionScoped
 
-public class WriteDatabase implements Serializable {
+public class InsertPersonalDataInDatabase implements Serializable {
 
     public static boolean writePersonalData(String user, String password, String email, String companyName, String companyAddress, String companyPostal, String companyCity) {
         Connection con = DatabaseConnection.getConnection();
@@ -40,7 +40,7 @@ public class WriteDatabase implements Serializable {
             con.close();
             return true;
         } catch (SQLException err) {
-            System.out.println("ERROR @ WriteDatabase.writePersonalData --->" + err.getMessage());
+            System.out.println("ERROR @ InsertPersonalDataInDatabase.writePersonalData --->" + err.getMessage());
             return false;
         }
     }

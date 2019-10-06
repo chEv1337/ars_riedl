@@ -17,15 +17,18 @@
         <h1>
         <h:outputLabel value="Erfolg!"/>
         </h1>
-        <h:outputLabel value="Reservierung war erfolgreich und wird von uns weiter bearbeitet."/>
+        <h:outputLabel styleClass="default" value="Reservierung war erfolgreich und wird von uns weiter bearbeitet."/>
         <br/>
         <br/>
-        <h:outputLabel value="Das Reservierungsfile wurde hier abgelegt: #{session.getAttribute('location')}"/>
+        <h:outputLabel styleClass="default" value="Das Reservierungsfile wurde hier abgelegt: #{session.getAttribute('location')}"/>
         <br/>
         <br/>
         <h:form>
-            <h:commandButton action="welcome" value="Profilseite"/>
             <h:commandButton action="article" value="Artikelreservoir"/>
+            <h:commandButton value="Reservierungshistory" action="reservations"/>
+            <br/>
+            <br/>
+            <h:commandButton action="welcome" value="Profilseite"/>
             <h:commandButton action="#{login.logoutUser}" value="Logout"/>
         </h:form>
     </f:view>

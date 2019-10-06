@@ -18,7 +18,7 @@
         <h:outputLabel value="Reservierungszusammenfassung:"/>
         </h1>
         <br/>
-        <h:dataTable value="#{session.getAttribute('cartList')}" var="cartEntry" border = "2">
+        <h:dataTable bgcolor="lightgrey" styleClass="default" value="#{session.getAttribute('cartList')}" var="cartEntry" border = "1" rendered="#{session.getAttribute('cartArrayCounter') > 0}">
             <h:column>
                 <f:facet name="header">ArtikelID</f:facet>
                 #{cartEntry.articleId}
@@ -40,11 +40,14 @@
                 #{cartEntry.articleWeight}
             </h:column>
         </h:dataTable>
+        <br/>
         <h:form>
-            <br/>
-            <h:commandButton value="Reservieren"  action="#{createReservationFile.createReservationFile}"/>
-            <br/>
+            <h:commandButton value="Reservierung abschließen"  action="#{createReservationFile.createReservationFile}"/>
+        </h:form>
+        <br/>
+        <h:form>
             <h:commandButton action="article" value="Artikelauswahl"/>
+            <br/>
             <h:commandButton action="#{login.logoutUser}" value="Logout"/>
         </h:form>
     </f:view>

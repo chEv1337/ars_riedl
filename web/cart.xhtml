@@ -42,6 +42,14 @@
         </h:dataTable>
         <br/>
         <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel styleClass="default" value="Artikelnummer:"/>
+                <h:inputText styleClass="cartInput" id="inputArticleId" value="#{removeReservationEntry.inputArticleId}"/>
+                <h:outputLabel styleClass="default" value="Anzahl:"/>
+                <h:inputText styleClass="cartInput" id="inputQuantity" value="#{removeReservationEntry.inputQuantity}"/>
+            </h:panelGrid>
+            <br/>
+            <h:commandButton value="Artikel entfernen" action="#{removeReservationEntry.removeEntry}"/>
             <h:commandButton value="Reservierung abschließen"  action="#{createReservationFile.createReservationFile}"/>
         </h:form>
         <br/>

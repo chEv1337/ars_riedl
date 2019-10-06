@@ -16,6 +16,7 @@ public class CreateReservationFile implements Serializable {
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
         Date date = new Date();
         HttpSession userSession = SessionData.getSession();
+        LoopCartListToDatabase.loopCartList();
         String location = "C:/project/export_" + userSession.getAttribute("user") + formatter.format(date) + ".txt";
         userSession.setAttribute("location", location);
         try (Writer exportWriter = new FileWriter(location)) {

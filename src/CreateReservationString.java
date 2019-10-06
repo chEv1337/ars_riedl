@@ -13,11 +13,11 @@ public class CreateReservationString implements Serializable {
         String reservationStringFinalized;
         HttpSession userSession = SessionData.getSession();
         ArrayList<ArticleMapping> cartList = (ArrayList<ArticleMapping>) userSession.getAttribute("cartList");
-        str.append("Reservierungsnummer: " + userSession.getAttribute("reservationId").toString() + "\n");
         for (ArticleMapping article:cartList) {
             str.append(article.getArticleId() + "   |   " + article.getArticleName() + "   |   " + article.getArticleQuantity() + "   |   "
                     + article.getArticlePrice() + "   |   " + article.getArticleWeight() + "\n");
         }
+        str.append("\nReservierungsnummer: " + userSession.getAttribute("reservationId").toString() + "\n");
         reservationStringFinalized = str.toString();
         return reservationStringFinalized;
     }

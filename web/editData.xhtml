@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <link rel="stylesheet" href="resources/css/style.css"/>
+    <f:metadata>
+        <f:viewAction action="#{sessionValidation.validateSession}"/>
+    </f:metadata>
+</h:head>
+<h:body>
+    <f:view>
+        <h1>
+            <h:outputLabel value="Profilseite: "/>
+        </h1>
+        <p class="default">
+            Hi #{session.getAttribute("user")}
+            <br/>
+            <br/>
+            Userdata:
+            <br/>
+        </p>
+        <h:form>
+            <h:panelGrid styleClass="default" columns="4">
+                <h:outputLabel value="Username:"/>
+                <h:outputLabel value="#{session.getAttribute('user')}"/>
+                <h:inputText id="userName" value="#{changePersonalData.userName}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.userName,'username')}"/>
+                <h:outputLabel value="Password:"/>
+                <h:outputLabel value="#{session.getAttribute('password')}"/>
+                <h:inputText id="password" value="#{changePersonalData.password}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.password,'password')}"/>
+                <h:outputLabel value="Email:"/>
+                <h:outputLabel value="#{session.getAttribute('email')}"/>
+                <h:inputText id="email" value="#{changePersonalData.email}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.email,'email')}"/>
+                <h:outputLabel value="Firmenname:"/>
+                <h:outputLabel value="#{session.getAttribute('companyName')}"/>
+                <h:inputText id="companyName" value="#{changePersonalData.companyName}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.companyName,'companyname')}"/>
+                <h:outputLabel value="Firmenadresse:"/>
+                <h:outputLabel value="#{session.getAttribute('companyAddress')}"/>
+                <h:inputText id="companyAddress" value="#{changePersonalData.companyAddress}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.companyAddress,'companyaddress')}"/>
+                <h:outputLabel value="Postleitzahl:"/>
+                <h:outputLabel value="#{session.getAttribute('companyPostal')}"/>
+                <h:inputText id="companyPostal" value="#{changePersonalData.companyPostal}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.companyPostal,'companypostal')}"/>
+                <h:outputLabel value="Stadt:"/>
+                <h:outputLabel value="#{session.getAttribute('companyCity')}"/>
+                <h:inputText id="companyCity" value="#{changePersonalData.companyCity}"/>
+                <h:commandButton value="Ändern" action="#{changePersonalData.change(changePersonalData.companyCity,'companycity')}"/>
+            </h:panelGrid>
+        </h:form>
+        <br/>
+        <h:form>
+            <br/>
+            <br/>
+            <h:commandButton value="Artikelseite" action="article"/>
+            <h:commandButton value="Profilseite" action="welcome"/>
+            <h:commandButton value="Reservierungshistory" action="reservations"/>
+            <br/>
+            <h:commandButton value="Logout" action="#{login.logoutUser}"/>
+        </h:form>
+    </f:view>
+</h:body>
+</html>

@@ -12,6 +12,10 @@ public class SessionData {
         HttpSession session = getSession();
         return session.getAttribute("user").toString();
     }
+    public static void setUserName(String newUserName) {
+        HttpSession session = getSession();
+        session.setAttribute("user", newUserName);
+    }
     public static String getUserId() {
         HttpSession session = getSession();
         if(session != null) {

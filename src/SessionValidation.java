@@ -8,7 +8,7 @@ import java.io.Serializable;
 @SessionScoped
 public class SessionValidation implements Serializable {
 
-    public String validateSession() {
+    public static String validateSession() {
         if(SessionData.getUserId() == null) {
             return "login";
         }

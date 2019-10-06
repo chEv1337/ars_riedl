@@ -38,8 +38,11 @@
         </h:panelGrid>
         <br/>
         <h:form>
+            <h:commandButton value="Artikelseite" action="article"/>
+            <br/>
+            <br/>
             <h:commandButton value="Reservierungshistory" action="reservations"/>
-            <h:commandButton value="Artikelreservoir" action="article"/>
+            <h:commandButton value="Artikel bearbeiten" action="#{adminValidation.validateAdmin}"/>
             <br/>
             <h:commandButton value="Logout" action="#{login.logoutUser}"/>
         </h:form>

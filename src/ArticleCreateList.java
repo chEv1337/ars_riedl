@@ -32,7 +32,7 @@ public class ArticleCreateList implements Serializable {
                 articles.add(articleMap);
             }
             rs.close();
-            connection.close();
+            DatabaseConnection.closeConnection(connection);
             statement.close();
 
         } catch (SQLException err) {

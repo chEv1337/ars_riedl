@@ -1,13 +1,10 @@
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Named

@@ -132,6 +132,7 @@ public class ChangePersonalData implements Serializable {
                 System.out.println("Error @ ChangePersonalData.java / user if clause --> " + err.getMessage());
             }
         }
+        DatabaseConnection.closeConnection(con);
         SetPersonalData.setData(SessionData.getSession());
     }
 }

@@ -16,7 +16,6 @@ public class DatabaseConnection {
             return null;
         }
     }
-    //testing git in school
     public static void closeConnection(Connection con) {
         try {
             con.close();

@@ -26,6 +26,7 @@ public class CreateReservationFile implements Serializable {
                     "Please try again or contact your administrator."));
             return "";
         } else {
+            GetReservationNumber.getNumber();
             LoopCartListToDatabase.loopCartList();
             String location = "C:/project/export_" + userSession.getAttribute("user") + formatter.format(date) + ".txt";
             userSession.setAttribute("location", location);

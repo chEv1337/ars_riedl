@@ -17,11 +17,7 @@ public class InsertReservationDataIntoDatabase implements Serializable {
         int reservationId = 0;
         HttpSession userSession = SessionData.getSession();
         try {
-            stmnt = con.prepareStatement("SELECT max(idreservation), max(reservationnumber) FROM reservation");
-            ResultSet rs = stmnt.executeQuery();
-            while(rs.next()) {
-                reservationId = 1 + rs.getInt("max(reservationnumber)");
-            }
+            reservationId = (int)userSession.getAttribute("reservationId");
             stmnt = con.prepareStatement("INSERT INTO reservation(reservationnumber, idarticle_fk, iduser_fk, reservationquantity)" +
                     "VALUES(?, ?, ?, ?)");
             stmnt.setInt(1, reservationId);
@@ -29,7 +25,6 @@ public class InsertReservationDataIntoDatabase implements Serializable {
             stmnt.setInt(3,(int) userSession.getAttribute("userid"));
             stmnt.setInt(4,quant);
             stmnt.executeUpdate();
-            userSession.setAttribute("reservationId", reservationId);
         } catch (SQLException err) {
             System.out.println("Error @ InsertReservationDataIntoDatabase.java -->" + err.getMessage());
         }

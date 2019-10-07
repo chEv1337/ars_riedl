@@ -17,7 +17,7 @@ public class SetPersonalData implements Serializable {
 
     public static void setData(HttpSession userSession) {
         Connection connection = DatabaseConnection.getConnection();
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         try {
             statement = connection.prepareStatement("SELECT email, companyname, companyaddress, companypostal, companycity " +
                                                         "FROM mydb.user LEFT JOIN company ON user.idcompany_fk = company.idcompany " +
@@ -39,7 +39,7 @@ public class SetPersonalData implements Serializable {
             userSession.setAttribute("cartArrayCounter", 0);
             List<ArticleMapping> cartList = new ArrayList<>();
             userSession.setAttribute("cartList", cartList);
-            connection.close();
+            DatabaseConnection.closeConnection(connection);
         } catch (SQLException err) {
             System.out.println("ERROR@SetPersonalDat -->>" + err.getMessage());
         }

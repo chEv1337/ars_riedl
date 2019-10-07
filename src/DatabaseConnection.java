@@ -20,7 +20,7 @@ public class DatabaseConnection {
         try {
             con.close();
         } catch (Exception err) {
-            System.out.println(err);
+            System.out.println(err.getMessage());
         }
     }
 }

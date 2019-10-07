@@ -27,6 +27,7 @@ public class AdminValidation implements Serializable {
                         return "welcome";
                     }
                 }
+                DatabaseConnection.closeConnection(con);
             } catch (SQLException err) {
                 System.out.println("Error @ AdminValidation.java --> " + err.getMessage());
             }

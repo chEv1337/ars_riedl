@@ -13,7 +13,6 @@ public class Login implements Serializable {
 
     private String password;
     private String user;
-    private String errormsg;
 
     public String getPassword() {
         return password;
@@ -29,14 +28,6 @@ public class Login implements Serializable {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public String getErrormsg() {
-        return errormsg;
-    }
-
-    public void setErrormsg(String errormsg) {
-        this.errormsg = errormsg;
     }
 
     public String verifyUser() {

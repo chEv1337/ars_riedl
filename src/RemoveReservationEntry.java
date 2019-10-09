@@ -56,14 +56,14 @@ public class RemoveReservationEntry implements Serializable {
             }
             if(artId == 0) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                        "Bitte überprüfen Sie Ihre Eingabe",
+                        "Bitte überprüfen Sie Ihre Eingabe; ArtikelID kann nicht Null sein.",
                         "Please try again or contact your administrator."));
             } else {
                 for (ArticleMapping article : cartList) {
                     if (article.getArticleId() == inputArticleId) {
                         if (article.getArticleQuantity() < inputQuantity) {
                             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                                    "Bitte überprüfen Sie Ihre Eingabe",
+                                    "Bitte überprüfen Sie Ihre Eingabe. Ihre Anzahl ist zu hoch.",
                                     "Please try again or contact your administrator."));
                             break;
                         } else {
@@ -82,7 +82,7 @@ public class RemoveReservationEntry implements Serializable {
                         }
                     } else {
                         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-                                "Bitte überprüfen Sie Ihre Eingabe",
+                                "Bitte überprüfen Sie Ihre Eingabe. ArtikelID nicht vorhanden.",
                                 "Please try again or contact your administrator."));
                     }
                 }

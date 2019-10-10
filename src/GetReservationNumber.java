@@ -23,6 +23,7 @@ public class GetReservationNumber implements Serializable {
                 reservationId = 1 + rs.getInt("max(reservationnumber)");
             }
             userSession.setAttribute("reservationId",reservationId);
+            DatabaseConnection.closeConnection(con);
         } catch (SQLException err) {
             System.out.println("Error @ GetReservationNumber.java --> " + err.getMessage());
         }

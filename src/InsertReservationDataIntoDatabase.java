@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Named
@@ -14,7 +13,7 @@ public class InsertReservationDataIntoDatabase implements Serializable {
     public static void insertReservation(int id, int quant) {
         Connection con = DatabaseConnection.getConnection();
         PreparedStatement stmnt;
-        int reservationId = 0;
+        int reservationId;
         HttpSession userSession = SessionData.getSession();
         try {
             reservationId = (int)userSession.getAttribute("reservationId");
@@ -25,6 +24,7 @@ public class InsertReservationDataIntoDatabase implements Serializable {
             stmnt.setInt(3,(int) userSession.getAttribute("userid"));
             stmnt.setInt(4,quant);
             stmnt.executeUpdate();
+            DatabaseConnection.closeConnection(con);
         } catch (SQLException err) {
             System.out.println("Error @ InsertReservationDataIntoDatabase.java -->" + err.getMessage());
         }

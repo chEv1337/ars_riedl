@@ -1,5 +1,4 @@
 import javax.enterprise.context.SessionScoped;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -20,13 +19,6 @@ public class ReservationEntry implements Serializable {
 
     private int inputQuantity;
     private int inputArticleId;
-
-    public ReservationEntry() {};
-
-    public ReservationEntry(int inputQuantity, int inputArticleId) {
-        this.inputArticleId=inputArticleId;
-        this.inputQuantity=inputQuantity;
-    }
 
     public int getInputQuantity() {
         return inputQuantity;
@@ -78,11 +70,8 @@ public class ReservationEntry implements Serializable {
                 userSession.setAttribute("cartArrayCounter", cartArrayCounter);
                 userSession.setAttribute("inputArticleId", inputArticleId);
                 userSession.setAttribute("inputQuantity", inputQuantity);
-                System.out.println(cartList.size() + " cartListSize @ ReservationEntry.java");
-                System.out.println(cartArrayCounter + " : cartArrayCounter @ ReservationEntry.java");
             }
             DatabaseConnection.closeConnection(con);
-
         } catch (SQLException err) {
             System.out.println("ERROR @ ReservationEntry --> " + err.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,

@@ -18,10 +18,11 @@ public class SessionData {
     }
     public static String getUserId() {
         HttpSession session = getSession();
-        if(session != null) {
-            return session.getAttribute("userid").toString();
-        } else {
-            return null;
+        if (session != null) {
+            if (session.getAttribute("userid") != null) {
+                return session.getAttribute("userid").toString();
+            }
         }
+        return null;
     }
 }
